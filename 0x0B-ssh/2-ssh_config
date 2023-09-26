@@ -3,5 +3,4 @@
 
 Host *
         PasswordAuthentication no
-        Host 100.26.9.92
         IdentityFile ~/.ssh/school

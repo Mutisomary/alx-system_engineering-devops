@@ -1,9 +1,18 @@
-#!/usr/bin/env bash
-# puppet manifest to make changes on config file
+# Puppet manifest to create ssh config file
 
-file { 'config':
-  ensure  => present,
-  owner   => 'root',
-  path    => '/etc/ssh/ssh_config',
-  content => 'IdentityFile ~/.ssh/school\n PasswordAuthentication no\n User ubuntu\n Host 100.26.9.92\n',
+include stdlib
+
+file { '/etc/ssh/ssh_config':
+  ensure => present,
+}
+
+file_line { 'Passwd auth':
+  ensure => present,
+  path   => '/etc/ssh/ssh_config',
+  line   => '	 PasswordAuthentication no',
+}
+
+file_line { 'Declare identity file':
+  path   => '/etc/ssh/ssh_config',
+  line   => '	 IdentityFile ~/.ssh/school',
 }

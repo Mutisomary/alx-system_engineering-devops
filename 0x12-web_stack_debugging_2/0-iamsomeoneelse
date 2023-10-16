@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# check the usename
+
+sudo -u "$1" whoami

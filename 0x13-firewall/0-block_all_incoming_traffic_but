@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# update
+sudo apt-get -y update
+
+# install firewall
+sudo apt-get -y install ufw
+
+# Deny all incoming traffic
+sudo ufw default deny incoming
+
+# Allow all outgoing traffic
+sudo ufw default allow outgoing
+
+# Allow incoming for 80, 443 and 22
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw allow 22/tcp
+
+sudo ufw enable
